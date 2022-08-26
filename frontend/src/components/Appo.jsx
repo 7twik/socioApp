@@ -4,6 +4,7 @@ import Header from "./Header";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 import axios from "axios";
+import Axios from "../api/axios";
 import $ from "jquery";
 import Tilt from 'react-parallax-tilt'
 
@@ -29,7 +30,7 @@ function Appo() {
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
   useEffect(()=>{
-    fetch("http://localhost:5000/note")
+    Axios.get("/note")
     .then(res => res.json())
     .then(jsonRes => setNotes(jsonRes));
     console.log(notes);
@@ -56,7 +57,7 @@ function Appo() {
       _id: _id
     }
     //post
-    axios.post("http://localhost:5000/del", newNote);
+    Axios.post("/del", newNote);
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;

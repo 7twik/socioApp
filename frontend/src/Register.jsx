@@ -40,7 +40,7 @@ const Register = () => {
     const [notes, setNotes] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:5000/found")
+        axios.get("/found")
         .then(res => res.json())
         .then(jsonRes => setNotes(jsonRes));
         notes.forEach((notes)=>{

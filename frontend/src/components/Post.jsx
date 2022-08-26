@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 // import Footer from "./Footer";
 import Noted from "./Noted";
+import Axios from "../api/axios";
 //import CreateArea from "./CreateArea";
 // import axios from "axios";
 import $ from "jquery";
@@ -14,7 +15,7 @@ function Post(){
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
   useEffect(()=>{
-    fetch("http://localhost:5000/poost")
+    Axios.get("/poost")
     .then(res => res.json())
     .then(jsonRes => setNotes(jsonRes));
     console.log(notes);

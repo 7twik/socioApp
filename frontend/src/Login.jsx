@@ -61,7 +61,7 @@ const Login = () => {
         //     Username: user,
         //     Password: pwd
         // }
-        fetch("http://localhost:5000/found")
+        axios.get("/found")
         .then(res => res.json())
         .then(jsonRes => setNotes(jsonRes));
         console.log(notes);
