@@ -30,9 +30,9 @@ function Appo() {
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
   useEffect(()=>{
-    Axios.get("/note")
-    .then(res => res.json())
-    .then(jsonRes => setNotes(jsonRes));
+    Axios.get("/note").then(res => setNotes(res.data));
+    // .then(res => res.json())
+    
     console.log(notes);
   }, [notes]);
 

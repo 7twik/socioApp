@@ -15,9 +15,9 @@ function Post(){
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
   useEffect(()=>{
-    Axios.get("/poost")
-    .then(res => res.json())
-    .then(jsonRes => setNotes(jsonRes));
+    Axios.get("/poost").then(res => setNotes(res));
+    // .then(res => res.json())
+    
     console.log(notes);
   }, [notes]);
 

@@ -40,9 +40,9 @@ const Register = () => {
     const [notes, setNotes] = useState([]);
 
     useEffect(()=>{
-        axios.get("/found")
-        .then(res => res.json())
-        .then(jsonRes => setNotes(jsonRes));
+        axios.get("/found").then(res => setNotes(res.data));
+        // .then(res => res.json())
+        
         notes.forEach((notes)=>{
             const st=notes.Username;
             if (user===st)

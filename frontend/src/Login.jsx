@@ -61,9 +61,9 @@ const Login = () => {
         //     Username: user,
         //     Password: pwd
         // }
-        axios.get("/found")
-        .then(res => res.json())
-        .then(jsonRes => setNotes(jsonRes));
+        axios.get("/found").then(res => setNotes(res.data));
+        // .then(res => res.json())
+        
         console.log(notes);
         notes.forEach((notes)=>{
             const st=notes.Username;
