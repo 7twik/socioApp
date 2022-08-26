@@ -12,7 +12,7 @@ let UsernameAU="";
 //     res.send("We are on post");
 // });
 
-router.route("/").get((req,res)=>{   //finding usernames already in db
+router.route("/found").get((req,res)=>{   //finding usernames already in db
     Posts.find({})
         .then(foundNotes => res.json(foundNotes))
         
