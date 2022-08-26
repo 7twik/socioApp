@@ -61,8 +61,11 @@ const Login = () => {
         //     Username: user,
         //     Password: pwd
         // }
-        axios.get("/found").then(res => setNotes(res.data));
-        // .then(res => res.json())
+        //axios.get("/found").then(res => setNotes(res.data));
+        
+        fetch("https://synthisha.herokuapp.com/found")
+        .then(res => res.json())
+        .then(jsonRes => setNotes(jsonRes));
         
         console.log(notes);
         notes.forEach((notes)=>{
