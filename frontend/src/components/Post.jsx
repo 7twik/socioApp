@@ -4,6 +4,7 @@ import Header from "./Header";
 import Noted from "./Noted";
 import Axios from "../api/axios";
 //import CreateArea from "./CreateArea";
+import axios from 'axios';
 // import axios from "axios";
 import $ from "jquery";
 import Tilt from 'react-parallax-tilt'
@@ -14,12 +15,27 @@ function Post(){
   //const [User,setUser]=useState();
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
-  useEffect(()=>{
-    Axios.get("/poost").then(res => setNotes(res));
+  React.useEffect(()=>{
+    // fetch("/api/get")
     // .then(res => res.json())
-    
-    console.log(notes);
-  }, [notes]);
+    // .then(jsonRes => setNotes(jsonRes));
+   
+      const fetch = async ()=>{
+        try{
+          const response= await axios.get("http://localhost:3001/poost");
+          setNotes(response.data);
+      } catch(err){
+        if (err.response){
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        }else{
+          console.log(err.message);
+        }
+      }
+  }
+  fetch();
+  }, []);
 
 //   useEffect(()=>{
 //     fetch("http://localhost:3500/User")

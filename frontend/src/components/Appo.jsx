@@ -29,20 +29,24 @@ function Appo() {
   // }, [User]);
   useEffect(()=>{$('link[href*="../index.css"]').prop('disable', true);},[]);
   //for fetching data useEffect, it is taking data from mongodb to paste in notes
-  useEffect(()=>{
-    Axios.get("/note").then(res => setNotes(res.data));
-    // .then(res => res.json())
-    
-    console.log(notes);
-  }, [notes]);
 
+  // useEffect(()=>{
+  //   axios.get("/api/note").then(res => setNotes(res.data));
+  //   // .then(res => res.json())
+    
+  //   console.log(notes);
+  // }, [notes]);
+  useEffect(()=>{
+    fetch("http://localhost:3001/note").then(res => res.json())
+       .then(jsonRes => setNotes(jsonRes));
+  })
 
 
  
 
   useEffect(()=>{
-    console.log(notes);
-  },[notes]);
+    console.log("NOTES from appo.jsx"+notes);
+  },[]);
 
   function deleteNote(user, id,_id) {
     // setNotes(prevNotes => {
@@ -57,7 +61,7 @@ function Appo() {
       _id: _id
     }
     //post
-    Axios.post("/del", newNote);
+    axios.post("/api/del", newNote);
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;

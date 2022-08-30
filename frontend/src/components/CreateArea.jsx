@@ -2,7 +2,8 @@ import React, { useState } from "react";
 //import AddIcon from "@material-ui/icons/Add";
 // import Fab from "@material-ui/core/Fab";
 // import Zoom from "@material-ui/core/Zoom";
-import Axios from "../api/axios";
+//import axios from "../api/axios";
+import axios from 'axios';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
@@ -73,7 +74,7 @@ React.useEffect((event) => {
       content: "",
       url:""
     });
-    Axios.post("/note", newNote);
+    axios.post("/note", newNote);
     // event.preventDefault();
     
     setDone(false);

@@ -4,7 +4,8 @@ import Post from "./components/Post";
 import Tilt from 'react-parallax-tilt';
 //import AuthContext from "./context/AuthProvider";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from './api/axios';
+import axios from "axios";
+import Axios from "./api/axios"
 // import ReactDOM from 'react-dom';
 const LOGIN_URL = '/Auth';
 
@@ -63,9 +64,27 @@ const Login = () => {
         // }
         //axios.get("/found").then(res => setNotes(res.data));
         
-        fetch("https://synthisha.herokuapp.com/found")
-        .then(res => res.json())
-        .then(jsonRes => setNotes(jsonRes));
+//         let request = new Request('http://localhost:5000/api/found', {
+//     headers: new Headers({
+//         'Content-Type': 'text/json' 
+//     }),
+//     method: 'GET'
+// });
+
+
+        // fetch("/api/found")
+        // .then(res => {
+        //     console.log(res);
+        //     res.json();})
+        // .then(jsonRes => setNotes(jsonRes));
+
+        // fetch(request).then((response) => {
+        //     console.log(response);
+        //     response.json().then((data) => {
+        //         console.log(data);
+        //     });
+        // });
+        axios.get("/found").then(res => setNotes(res.data));
         
         console.log(notes);
         notes.forEach((notes)=>{
@@ -80,7 +99,7 @@ const Login = () => {
             {
                 if (pwd===tt)
                 {
-                    axios.post(LOGIN_URL,pst);
+                    Axios.post(LOGIN_URL,pst);
                     setSuccess(true);
 
                 }
