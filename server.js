@@ -13,8 +13,8 @@ const router = express.Router();
 dotenv.config();
 
 
-const link ="mongodb+srv://7twik:zKqW0UzgQO3G3iMy@cluster0.sjxr9uv.mongodb.net/mydb";
-mongoose.connect(process.env.MONGODB_URI || link,()=> console.log("connected to db"));
+
+mongoose.connect(process.env.MONGODB_URI ,()=> console.log("connected to db"));
 
 const apiRouter=express.Router();
 const foundRouter=express.Router();
